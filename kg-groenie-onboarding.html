@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KG Groenie Designs — Client Welcome Pack</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --accent: #e8ff47;
+      --white: #f5f2ee;
+      --grey: #666;
+      --light: #f9f8f6;
+      --border: #e5e2de;
+    }
+
+    body {
+      background: var(--light);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* COVER */
+    .cover {
+      background: var(--black);
+      color: var(--white);
+      padding: 60px 50px 50px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::before {
+      content: '';
+      position: absolute; top: 0; right: 0;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(232,255,71,0.15) 0%, transparent 70%);
+    }
+    .cover-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.3rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 60px;
+    }
+    .cover-logo span { color: var(--accent); }
+    .cover h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 2.8rem;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+    }
+    .cover h1 em { color: var(--accent); font-style: normal; }
+    .cover-sub {
+      color: #888;
+      font-size: 1rem;
+      max-width: 400px;
+      margin-bottom: 50px;
+    }
+    .cover-meta {
+      display: flex; gap: 2rem; flex-wrap: wrap;
+      border-top: 1px solid #222;
+      padding-top: 1.5rem;
+    }
+    .cover-meta-item { font-size: 0.8rem; color: #666; }
+    .cover-meta-item strong { display: block; color: var(--accent); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.2rem; }
+
+    /* CONTENT */
+    .content { max-width: 760px; margin: 0 auto; padding: 50px 40px; }
+
+    /* SECTION */
+    .section { margin-bottom: 3rem; }
+    .section-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--black);
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+      margin-bottom: 0.6rem;
+    }
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 0.5rem;
+      display: inline-block;
+    }
+    p { color: #444; margin-bottom: 0.8rem; }
+    p strong { color: var(--black); font-weight: 500; }
+
+    /* STEPS */
+    .steps { margin-top: 1.2rem; }
+    .step {
+      display: flex; gap: 1.2rem;
+      margin-bottom: 1.2rem;
+      align-items: flex-start;
+    }
+    .step-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 0.85rem;
+      background: var(--black);
+      color: var(--accent);
+      width: 32px; height: 32px;
+      border-radius: 2px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .step-content h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 0.3rem;
+    }
+    .step-content p { font-size: 0.9rem; margin: 0; }
+
+    /* CHECKLIST */
+    .checklist { margin-top: 1rem; }
+    .check-item {
+      display: flex; gap: 0.8rem; align-items: flex-start;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+      color: #444;
+    }
+    .check-item:last-child { border-bottom: none; }
+    .check-box {
+      width: 18px; height: 18px;
+      border: 2px solid var(--black);
+      border-radius: 2px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* INFO BOX */
+    .info-box {
+      background: var(--black);
+      color: var(--white);
+      padding: 1.5rem 2rem;
+      border-radius: 4px;
+      margin: 1.5rem 0;
+    }
+    .info-box h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .info-box p { color: #aaa; font-size: 0.9rem; margin: 0; }
+    .info-box p strong { color: var(--white); }
+
+    /* WARNING BOX */
+    .warn-box {
+      background: #fffbea;
+      border-left: 3px solid var(--accent);
+      padding: 1rem 1.5rem;
+      margin: 1.2rem 0;
+      border-radius: 0 4px 4px 0;
+    }
+    .warn-box p { font-size: 0.88rem; color: #555; margin: 0; }
+    .warn-box strong { color: var(--black); }
+
+    /* PRICING TABLE */
+    .price-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    .price-table th {
+      background: var(--black);
+      color: var(--accent);
+      font-family: 'Syne', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.8rem 1rem;
+      text-align: left;
+    }
+    .price-table td {
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+      color: #444;
+    }
+    .price-table tr:last-child td { border-bottom: none; }
+    .price-table tr:nth-child(even) td { background: #f5f3f0; }
+    .price-highlight { font-family: 'Syne', sans-serif; font-weight: 700; color: var(--black) !important; }
+
+    /* PHOTO TIPS */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .photo-card {
+      padding: 1.2rem;
+      border-radius: 4px;
+      font-size: 0.88rem;
+    }
+    .photo-card.do { background: #f0faf0; border: 1px solid #c3e6c3; }
+    .photo-card.dont { background: #fdf0f0; border: 1px solid #f0c3c3; }
+    .photo-card h4 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .photo-card.do h4 { color: #2d7a2d; }
+    .photo-card.dont h4 { color: #a02020; }
+    .photo-card ul { padding-left: 1rem; color: #555; }
+    .photo-card li { margin-bottom: 0.3rem; }
+
+    /* TIMELINE */
+    .timeline { margin-top: 1.2rem; position: relative; }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 15px; top: 0; bottom: 0;
+      width: 2px; background: var(--border);
+    }
+    .tl-item {
+      display: flex; gap: 1.5rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    .tl-dot {
+      width: 30px; height: 30px;
+      background: var(--black);
+      color: var(--accent);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 0.7rem;
+      flex-shrink: 0;
+      position: relative; z-index: 1;
+    }
+    .tl-content h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+    .tl-content p { font-size: 0.88rem; color: var(--grey); margin: 0; }
+
+    /* CONTACT FOOTER */
+    .contact-footer {
+      background: var(--black);
+      color: var(--white);
+      padding: 2.5rem 2.5rem;
+      margin-top: 3rem;
+      border-radius: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .contact-footer h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+    }
+    .contact-footer p { color: #888; font-size: 0.85rem; margin: 0; }
+    .contact-details { display: flex; flex-direction: column; gap: 0.4rem; }
+    .contact-item { font-size: 0.85rem; color: #ccc; }
+    .contact-item strong { color: var(--accent); margin-right: 0.5rem; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; }
+
+    /* DIVIDER */
+    .divider { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
+
+    @media print {
+      body { font-size: 13px; }
+      .cover { padding: 40px 40px 35px; }
+      .content { padding: 35px 30px; }
+    }
+    @media (max-width: 600px) {
+      .cover { padding: 40px 25px 35px; }
+      .cover h1 { font-size: 2rem; }
+      .content { padding: 30px 20px; }
+      .photo-grid { grid-template-columns: 1fr; }
+      .contact-footer { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="cover-logo">KG<span>.</span>Groenie Designs</div>
+    <h1>Welcome to<br/><em>your new site.</em></h1>
+    <p class="cover-sub">Everything you need to know about working with us — from first brief to going live.</p>
+    <div class="cover-meta">
+      <div class="cover-meta-item"><strong>Designer</strong>Kirsten Groenewald</div>
+      <div class="cover-meta-item"><strong>Contact</strong>kirsten.hpt@gmail.com</div>
+      <div class="cover-meta-item"><strong>WhatsApp</strong>+27 84 251 4572</div>
+      <div class="cover-meta-item"><strong>Delivery</strong>5–7 Working Days</div>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- WELCOME -->
+    <div class="section">
+      <div class="section-num">Welcome</div>
+      <h2>Hello & thank you</h2>
+      <p>Thank you for choosing KG Groenie Designs. I'm Kirsten — a South African web designer focused on helping small businesses get online with clean, fast, professional landing pages.</p>
+      <p>This document walks you through <strong>everything that happens from here</strong> — what I need from you, how the process works, timelines, and how to get support once your site is live.</p>
+      <p>Please read it fully before we begin. It saves us both time and makes for a smoother project.</p>
+    </div>
+
+    <hr class="divider"/>
+
+    <!-- HOW IT WORKS -->
+    <div class="section">
+      <div class="section-num">Process</div>
+      <h2>How it works</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h3>You send your content & brief</h3>
+            <p>Fill in the Content Checklist below and send everything over via WhatsApp or email. The better your content, the better your site.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h3>You purchase your domain name</h3>
+            <p>Buy your domain (e.g. yourbusiness.co.za) from a registrar like Afrihost, Xneelo, or GoDaddy. Send me the login details so I can point it to your site.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h3>I build your site</h3>
+            <p>I design and build your landing page. You'll receive a preview link within 5–7 working days of receiving all your content.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h3>You review & request changes</h3>
+            <p>You get <strong>one round of revisions</strong> included. Review the preview carefully and send all changes at once.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <h3>We go live</h3>
+            <p>Once approved, your site goes live on your domain — hosted free on Netlify. Fast, secure, and no monthly fees.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider"/>
+
+    <!-- CONTENT CHECKLIST -->
+    <div class="section">
+      <div class="section-num">What I Need From You</div>
+      <h2>Content checklist</h2>
+      <p>Please send <strong>all of the following</strong> before I begin. Missing content delays your project.</p>
+      <div class="checklist">
+        <div class="check-item"><div class="check-box"></div>Business name and tagline (what you do in one sentence)</div>
+        <div class="check-item"><div class="check-box"></div>Your logo file (PNG or SVG with transparent background preferred)</div>
+        <div class="check-item"><div class="check-box"></div>Brand colours if you have them (hex codes or just describe the vibe)</div>
+        <div class="check-item"><div class="check-box"></div>Photos — minimum 3, ideally 5–8 (see Photo Guidelines below)</div>
+        <div class="check-item"><div class="check-box"></div>About section — 2–3 sentences about your business or yourself</div>
+        <div class="check-item"><div class="check-box"></div>Services or products you offer with short descriptions</div>
+        <div class="check-item"><div class="check-box"></div>Your contact details (phone, email, WhatsApp, address if relevant)</div>
+        <div class="check-item"><div class="check-box"></div>Social media links (Facebook, Instagram, etc.)</div>
+        <div class="check-item"><div class="check-box"></div>Any specific pages or sections you want included</div>
+        <div class="check-item"><div class="check-box"></div>Examples of websites you like the look of (optional but helpful)</div>
+      </div>
+
+      <div class="warn-box" style="margin-top:1.5rem;">
+        <p><strong>Important:</strong> The clock on your 5–7 day delivery only starts once I have received ALL of the above. Incomplete briefs delay your launch.</p>
+      </div>
+    </div>
+
+    <hr class="divider"/>
+
+    <!-- PHOTO GUIDELINES -->
+    <div class="section">
+      <div class="section-num">Photos</div>
+      <h2>Photo guidelines</h2>
+      <p>Photos make or break a website. Please take a moment to read this before sending images.</p>
+      <div class="photo-grid">
+        <div class="photo-card do">
+          <h4>✓ Do</h4>
+          <ul>
+            <li>Use good natural lighting</li>
+            <li>Send high resolution (taken on a modern phone is fine)</li>
+            <li>Show your actual work, products, or space</li>
+            <li>Keep backgrounds clean and uncluttered</li>
+            <li>Send landscape (horizontal) photos where possible</li>
+            <li>Send originals — don't crop or compress first</li>
+          </ul>
+        </div>
+        <div class="photo-card dont">
+          <h4>✗ Don't</h4>
+          <ul>
+            <li>Send blurry or dark photos</li>
+            <li>Send screenshots of photos</li>
+            <li>Use heavy filters</li>
+            <li>Send photos with watermarks</li>
+            <li>Send very small or compressed images</li>
+            <li>Use photos you don't own the rights to</li>
+          </ul>
+        </div>
+      </div>
+      <div class="info-box" style="margin-top:1.2rem;">
+        <h3>No good photos?</h3>
+        <p>Let me know and I can source high-quality <strong>free stock photos</strong> that suit your business. Just describe your industry and vibe.</p>
+      </div>
+    </div>
+
+    <hr class="divider"/>
+
+    <!-- DOMAIN -->
+    <div class="section">
+      <div class="section-num">Domain Name</div>
+      <h2>Buying your domain</h2>
+      <p>Your domain name (e.g. <strong>yourbusiness.co.za</strong>) is purchased separately by you. It typically costs <strong>R150–R300 per year</strong>.</p>
+      <p>Recommended registrars in South Africa:</p>
+      <div class="checklist">
+        <div class="check-item"><div class="check-box"></div><strong>Afrihost</strong> — afrihost.com — popular and reliable</div>
+        <div class="check-item"><div class="check-box"></div><strong>Xneelo</strong> — xneelo.co.za — good local support</div>
+        <div class="check-item"><div class="check-box"></div><strong>GoDaddy</strong> — godaddy.com — often has deals</div>
+      </div>
+      <div class="warn-box">
+        <p><strong>Once purchased:</strong> Create a free Netlify account at netlify.com using your business email. Send me your login details and I will connect your domain to your site.</p>
+      </div>
+    </div>
+
+    <hr class="divider"/>
+
+    <!-- TIMELINE -->
+    <div class="section">
+      <div class="section-num">Timeline</div>
+      <h2>What to expect & when</h2>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot">D1</div>
+          <div class="tl-content">
+            <h3>Day 1 — Brief received</h3>
+            <p>You send all content. I confirm receipt and the clock starts.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">D3</div>
+          <div class="tl-content">
+            <h3>Day 3–5 — Build in progress</h3>
+            <p>I'm building your site. I may WhatsApp you with a quick question if something is unclear.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">D7</div>
+          <div class="tl-content">
+            <h3>Day 5–7 — Preview link sent</h3>
+            <p>You receive a preview link to review your site. Please review within 2 working days.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">✓</div>
+          <div class="tl-content">
+            <h3>Revisions & go live</h3>
+            <p>Changes applied within 2 working days. Site goes live on your domain once approved.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider"/>
+
+    <!-- PRICING & CHANGES -->
+    <div class="section">
+      <div class="section-num">Pricing & Changes</div>
+      <h2>What's included</h2>
+      <table class="price-table">
+        <thead>
+          <tr><th>Item</th><th>What's included</th><th>Cost</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="price-highlight">Standard Site</td>
+            <td>Custom landing page, mobile-friendly, contact form or WhatsApp button, hosted on Netlify</td>
+            <td class="price-highlight">R3,000</td>
+          </tr>
+          <tr>
+            <td class="price-highlight">Revisions</td>
+            <td>3 changes included after launch (text, colours, photos, layout tweaks)</td>
+            <td class="price-highlight">Free</td>
+          </tr>
+          <tr>
+            <td class="price-highlight">Additional Changes</td>
+            <td>Any changes after the 3 free ones are used</td>
+            <td class="price-highlight">R500/change</td>
+          </tr>
+          <tr>
+            <td class="price-highlight">Domain</td>
+            <td>Purchased separately by you</td>
+            <td class="price-highlight">~R150–R300/yr</td>
+          </tr>
+          <tr>
+            <td class="price-highlight">Hosting</td>
+            <td>Hosted free on Netlify — no monthly fees</td>
+            <td class="price-highlight">Free</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="warn-box" style="margin-top:1.2rem;">
+        <p><strong>Change requests:</strong> After launch, all changes must be submitted via the support form on my website. This keeps everything tracked and nothing gets lost in WhatsApp threads.</p>
+      </div>
+    </div>
+
+    <hr class="divider"/>
+
+    <!-- SUPPORT -->
+    <div class="section">
+      <div class="section-num">After Launch</div>
+      <h2>Getting support</h2>
+      <p>Once your site is live, all change requests and questions go through the <strong>support form on my website</strong>. This creates a ticket so nothing gets missed.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h3>Visit the support form</h3>
+            <p>Go to my website and click "Submit a Request" — takes 2 minutes to fill in.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h3>Describe what you need</h3>
+            <p>Be specific — e.g. "Change my phone number from X to Y" or "Add a new photo to the gallery."</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h3>I'll confirm and action it</h3>
+            <p>You'll get a confirmation and I'll aim to action it within 2–3 working days.</p>
+          </div>
+        </div>
+      </div>
+      <div class="info-box">
+        <h3>Remember</h3>
+        <p>Your first <strong>3 changes after launch are free.</strong> From change 4 onwards, each change is <strong>R500.</strong> Changes are counted per request, not per edit within a request — so group them together where you can.</p>
+      </div>
+    </div>
+
+    <!-- CONTACT FOOTER -->
+    <div class="contact-footer">
+      <div>
+        <h3>KG Groenie Designs</h3>
+        <p>Helping businesses make a name and bring growth.</p>
+      </div>
+      <div class="contact-details">
+        <div class="contact-item"><strong>WhatsApp</strong>+27 84 251 4572</div>
+        <div class="contact-item"><strong>Email</strong>kirsten.hpt@gmail.com</div>
+        <div class="contact-item"><strong>Location</strong>South Africa</div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

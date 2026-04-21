@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KG Groenie Designs | Helping Businesses Make a Name</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f2ee;
+      --accent: #e8ff47;
+      --mid: #1a1a1a;
+      --grey: #888;
+      --card: #141414;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 2rem;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #1f1f1f;
+    }
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--accent); }
+    nav a {
+      color: var(--grey);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--accent); }
+    .nav-links { display: flex; gap: 2rem; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 2rem;
+      padding-bottom: 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 80% 20%, rgba(232,255,71,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 60% at 10% 80%, rgba(232,255,71,0.04) 0%, transparent 50%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; z-index: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 900px; }
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(232,255,71,0.3);
+      padding: 0.3rem 0.8rem;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.2s forwards;
+    }
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(3rem, 9vw, 7rem);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.4s forwards;
+    }
+    h1 em { font-style: normal; color: var(--accent); }
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--grey);
+      max-width: 500px;
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.6s forwards;
+    }
+    .hero-ctas {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.8s forwards;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: var(--black);
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.9rem 2rem;
+      border: none; border-radius: 2px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(232,255,71,0.25); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.9rem 2rem;
+      border: 1px solid #333;
+      border-radius: 2px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── MARQUEE ── */
+    .marquee-wrap {
+      background: var(--accent);
+      padding: 0.7rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .marquee-track {
+      display: inline-block;
+      animation: marquee 20s linear infinite;
+    }
+    .marquee-track span {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--black);
+      margin: 0 2rem;
+    }
+    .marquee-track span::before { content: '✦'; margin-right: 2rem; }
+
+    /* ── SECTIONS ── */
+    section { padding: 5rem 2rem; }
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    /* ── WHAT I DO ── */
+    .what-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1px;
+      margin-top: 3rem;
+      border: 1px solid #1f1f1f;
+    }
+    .what-card {
+      background: var(--card);
+      padding: 2rem;
+      transition: background 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .what-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+      transform-origin: left;
+    }
+    .what-card:hover { background: #1a1a1a; }
+    .what-card:hover::before { transform: scaleX(1); }
+    .what-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+    .what-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.7rem;
+    }
+    .what-card p { font-size: 0.9rem; color: var(--grey); line-height: 1.6; }
+
+    /* ── PRICING ── */
+    .pricing-wrap {
+      max-width: 700px;
+      margin: 3rem auto 0;
+    }
+    .pricing-card {
+      background: var(--card);
+      border: 1px solid #222;
+      border-radius: 4px;
+      padding: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .pricing-card::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--accent);
+    }
+    .price {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(3rem, 8vw, 5rem);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin: 1rem 0;
+    }
+    .price sup { font-size: 1.5rem; vertical-align: super; }
+    .price-note { color: var(--grey); font-size: 0.9rem; margin-bottom: 2rem; }
+    .price-list { list-style: none; margin-bottom: 2.5rem; }
+    .price-list li {
+      padding: 0.7rem 0;
+      border-bottom: 1px solid #1f1f1f;
+      font-size: 0.95rem;
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .price-list li::before { content: '✓'; color: var(--accent); font-weight: 700; }
+    .price-list li:last-child { border-bottom: none; }
+    .pricing-note {
+      margin-top: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--grey);
+      text-align: center;
+    }
+
+    /* ── PORTFOLIO ── */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .portfolio-card {
+      background: var(--card);
+      border: 1px solid #1f1f1f;
+      border-radius: 4px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .portfolio-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+    .portfolio-thumb {
+      height: 180px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      letter-spacing: -0.02em;
+      position: relative;
+      overflow: hidden;
+    }
+    .portfolio-thumb.art { background: linear-gradient(135deg, #1a0a2e, #2d1b69); color: #c9a0ff; }
+    .portfolio-thumb.machinery { background: linear-gradient(135deg, #0a1628, #1e3a5f); color: #60a5fa; }
+    .portfolio-thumb.pt { background: linear-gradient(135deg, #0a1a0a, #1a3a1a); color: #86efac; }
+    .portfolio-info { padding: 1.5rem; }
+    .portfolio-info h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+    .portfolio-info p { font-size: 0.85rem; color: var(--grey); }
+    .portfolio-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-top: 0.8rem;
+    }
+
+    /* ── ABOUT ── */
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      max-width: 1000px;
+    }
+    @media (max-width: 700px) { .about-inner { grid-template-columns: 1fr; gap: 2rem; } }
+    .about-text p {
+      color: var(--grey);
+      line-height: 1.8;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+    .about-text p strong { color: var(--white); font-weight: 500; }
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .stat {
+      background: var(--card);
+      border: 1px solid #1f1f1f;
+      padding: 1.5rem;
+      border-radius: 4px;
+    }
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 2rem;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+    }
+    .stat-label { font-size: 0.8rem; color: var(--grey); margin-top: 0.3rem; }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: var(--accent);
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+    .cta-section h2 {
+      color: var(--black);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      margin-bottom: 1rem;
+    }
+    .cta-section p { color: rgba(0,0,0,0.6); margin-bottom: 2rem; font-size: 1rem; }
+    .btn-dark {
+      background: var(--black);
+      color: var(--accent);
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 1rem 2.5rem;
+      border: none; border-radius: 2px;
+      text-decoration: none;
+      display: inline-block;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-dark:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem;
+      border-top: 1px solid #1f1f1f;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    footer p { font-size: 0.8rem; color: var(--grey); }
+    footer a { color: var(--grey); text-decoration: none; font-size: 0.8rem; }
+    footer a:hover { color: var(--accent); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.2rem; }
+      .nav-links { display: none; }
+      section { padding: 3.5rem 1.2rem; }
+      .pricing-card { padding: 2rem 1.5rem; }
+      .hero { padding: 1.2rem; padding-bottom: 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">KG<span>.</span>Groenie</div>
+    <div class="nav-links">
+      <a href="#what">Services</a>
+      <a href="#portfolio">Work</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-tag">Web Design · South Africa</div>
+      <h1>Helping businesses <em>make a name.</em></h1>
+      <p class="hero-sub">Clean, fast landing pages for small businesses. No monthly fees. No complexity. Just a site that works — and gets you found.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-primary">Get Your Site →</a>
+        <a href="#portfolio" class="btn-outline">See My Work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span>Landing Pages</span>
+      <span>Small Business</span>
+      <span>Fast Delivery</span>
+      <span>Hosted Free</span>
+      <span>South Africa</span>
+      <span>Mobile Friendly</span>
+      <span>Landing Pages</span>
+      <span>Small Business</span>
+      <span>Fast Delivery</span>
+      <span>Hosted Free</span>
+      <span>South Africa</span>
+      <span>Mobile Friendly</span>
+    </div>
+  </div>
+
+  <!-- WHAT I DO -->
+  <section id="what">
+    <div class="section-label">What I Do</div>
+    <h2>Simple sites.<br/>Real results.</h2>
+    <div class="what-grid">
+      <div class="what-card">
+        <div class="what-num">01</div>
+        <h3>Landing Pages</h3>
+        <p>A single, focused page that tells your story, shows your work, and turns visitors into customers.</p>
+      </div>
+      <div class="what-card">
+        <div class="what-num">02</div>
+        <h3>Mobile First</h3>
+        <p>Most of your customers are on their phones. Every site I build looks perfect on mobile.</p>
+      </div>
+      <div class="what-card">
+        <div class="what-num">03</div>
+        <h3>Fast & Hosted Free</h3>
+        <p>Sites go live on Netlify or Vercel — blazing fast, zero monthly hosting costs. You just need a domain.</p>
+      </div>
+      <div class="what-card">
+        <div class="what-num">04</div>
+        <h3>Local Support</h3>
+        <p>I'm based in South Africa. WhatsApp me when something needs fixing. No tickets, no waiting.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio" style="background: #0d0d0d;">
+    <div class="section-label">My Work</div>
+    <h2>Built with purpose.</h2>
+    <div class="portfolio-grid">
+      <div class="portfolio-card">
+        <div class="portfolio-thumb art">Artist Portfolio</div>
+        <div class="portfolio-info">
+          <h3>Artist Portfolio</h3>
+          <p>Gallery-style portfolio site showcasing original artwork with a clean, visual-first design.</p>
+          <span class="portfolio-tag">Portfolio · Artist</span>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <div class="portfolio-thumb machinery">Machinery Hire</div>
+        <div class="portfolio-info">
+          <h3>Plant & Machinery Hire</h3>
+          <p>Lead-generation landing page for a machinery rental and repair business.</p>
+          <span class="portfolio-tag">Landing Page · Trade</span>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <div class="portfolio-thumb pt">Personal Training</div>
+        <div class="portfolio-info">
+          <h3>Personal Training</h3>
+          <p>Conversion-focused site for an online personal trainer targeting local and international clients.</p>
+          <span class="portfolio-tag">Landing Page · Fitness</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="section-label">Pricing</div>
+    <h2>One price.<br/>No surprises.</h2>
+    <div class="pricing-wrap">
+      <div class="pricing-card">
+        <div class="section-label">Standard Package</div>
+        <div class="price"><sup>R</sup>3,000</div>
+        <p class="price-note">Once-off. No monthly fees.</p>
+        <ul class="price-list">
+          <li>Custom landing page designed for your business</li>
+          <li>Mobile-friendly & fast loading</li>
+          <li>Contact form or WhatsApp button</li>
+          <li>Hosted free on Netlify or Vercel</li>
+          <li>Delivered within 5–7 working days</li>
+          <li>1 round of revisions included</li>
+        </ul>
+        <a href="#contact" class="btn-primary" style="display:block; text-align:center;">Start Your Project →</a>
+        <p class="pricing-note">* Domain name purchased separately by client (approx. R150–R300/year)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" style="background: #0d0d0d;">
+    <div class="about-inner">
+      <div class="about-text">
+        <div class="section-label">About</div>
+        <h2 style="margin-bottom:1.5rem;">Local builder.<br/>Real results.</h2>
+        <p>I'm Kirsten — based in South Africa and passionate about helping small businesses get online without the big agency price tag or the monthly WordPress headaches.</p>
+        <p>I build <strong>clean, fast landing pages</strong> that are hosted for free and easy to maintain. No bloated themes. No plugin subscriptions. Just a site that works.</p>
+        <p>Every business deserves a proper online presence — and it shouldn't cost a fortune to get one.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Sites built & live</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">R0</div>
+          <div class="stat-label">Monthly hosting costs</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">5–7</div>
+          <div class="stat-label">Days to delivery</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">SA</div>
+          <div class="stat-label">Local & reachable</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="contact">
+    <h2>Ready to get found?</h2>
+    <p>WhatsApp me and let's get your business online — fast.</p>
+    <a href="https://wa.me/27842514572?text=Hi%20Kirsten%2C%20I%27m%20interested%20in%20a%20website%20for%20my%20business" class="btn-dark" target="_blank">
+      WhatsApp Kirsten →
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 KG Groenie Designs · South Africa</p>
+    <p>Built with ❤️ and hosted free on Netlify</p>
+    <a href="mailto:kirsten.hpt@gmail.com">kirsten.hpt@gmail.com</a>
+  </footer>
+
+</body>
+</html>
