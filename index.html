@@ -227,6 +227,60 @@
     }
     .what-card p { font-size: 0.9rem; color: var(--grey); line-height: 1.6; }
 
+    /* ── PORTFOLIO ── */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    @media (max-width: 800px) {
+      .portfolio-grid { grid-template-columns: 1fr; }
+    }
+    .portfolio-card {
+      background: var(--card);
+      border: 1px solid #1f1f1f;
+      border-radius: 4px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+      display: block;
+    }
+    .portfolio-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+    .portfolio-thumb {
+      height: 180px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      letter-spacing: -0.02em;
+      position: relative;
+      overflow: hidden;
+    }
+    .portfolio-thumb.art { background: linear-gradient(135deg, #1a0a2e, #2d1b69); color: #c9a0ff; }
+    .portfolio-thumb.machinery { background: linear-gradient(135deg, #0a1628, #1e3a5f); color: #60a5fa; }
+    .portfolio-thumb.pt { background: linear-gradient(135deg, #0a1a0a, #1a3a1a); color: #86efac; }
+    .portfolio-info { padding: 1.5rem; }
+    .portfolio-info h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+      color: var(--white);
+    }
+    .portfolio-info p { font-size: 0.85rem; color: var(--grey); }
+    .portfolio-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-top: 0.8rem;
+    }
+
     /* ── PRICING ── */
     .pricing-wrap {
       max-width: 700px;
@@ -271,83 +325,61 @@
       color: var(--grey);
       text-align: center;
     }
-<!-- TESTIMONIALS -->
-<section id="testimonials">
-  <div class="section-label">Kind Words</div>
-  <h2>What clients say.</h2>
-  <div class="testi-grid">
 
-    <div class="testi-card">
-      <p class="testi-quote">"Add Alpine's testimonial here once they send it."</p>
-      <div class="testi-author">
-        <div class="testi-avatar">P</div>
-        <div>
-          <p class="testi-name">Paul</p>
-          <p class="testi-role">Alpine Sports Coaching</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="testi-card" style="opacity:0.35;">
-      <p class="testi-quote">"More reviews coming soon..."</p>
-      <div class="testi-author">
-        <div class="testi-avatar">?</div>
-        <div>
-          <p class="testi-name">Coming Soon</p>
-          <p class="testi-role">Future Client</p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-    /* ── PORTFOLIO ── */
-    .portfolio-grid {
+    /* ── TESTIMONIALS ── */
+    .testi-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
       margin-top: 3rem;
+      max-width: 800px;
     }
-    .portfolio-card {
+    .testi-card {
       background: var(--card);
       border: 1px solid #1f1f1f;
       border-radius: 4px;
-      overflow: hidden;
-      transition: transform 0.3s, box-shadow 0.3s;
+      padding: 2rem;
+      position: relative;
     }
-    .portfolio-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    .testi-card::before {
+      content: '"';
+      font-size: 5rem;
+      color: var(--accent);
+      opacity: 0.15;
+      position: absolute;
+      top: 0.5rem;
+      left: 1.25rem;
+      line-height: 1;
+      font-family: 'Syne', sans-serif;
     }
-    .portfolio-thumb {
-      height: 180px;
-      display: flex; align-items: center; justify-content: center;
+    .testi-quote {
+      font-size: 0.95rem;
+      color: var(--grey);
+      line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 1.5rem;
+    }
+    .testi-author { display: flex; align-items: center; gap: 0.75rem; }
+    .testi-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-family: 'Syne', sans-serif;
       font-weight: 800;
-      font-size: 1.5rem;
-      letter-spacing: -0.02em;
-      position: relative;
-      overflow: hidden;
+      font-size: 1rem;
+      flex-shrink: 0;
     }
-    .portfolio-thumb.art { background: linear-gradient(135deg, #1a0a2e, #2d1b69); color: #c9a0ff; }
-    .portfolio-thumb.machinery { background: linear-gradient(135deg, #0a1628, #1e3a5f); color: #60a5fa; }
-    .portfolio-thumb.pt { background: linear-gradient(135deg, #0a1a0a, #1a3a1a); color: #86efac; }
-    .portfolio-info { padding: 1.5rem; }
-    .portfolio-info h3 {
+    .testi-name {
       font-family: 'Syne', sans-serif;
       font-weight: 700;
-      font-size: 1rem;
-      margin-bottom: 0.4rem;
+      font-size: 0.9rem;
     }
-    .portfolio-info p { font-size: 0.85rem; color: var(--grey); }
-    .portfolio-tag {
-      display: inline-block;
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-top: 0.8rem;
-    }
+    .testi-role { font-size: 0.75rem; color: var(--grey); }
 
     /* ── ABOUT ── */
     .about-inner {
@@ -441,15 +473,6 @@
       section { padding: 3.5rem 1.2rem; }
       .pricing-card { padding: 2rem 1.5rem; }
       .hero { padding: 1.2rem; padding-bottom: 4rem; }
-      /* TESTIMONIALS */
-.testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; max-width: 800px; }
-.testi-card { background: var(--card); border: 1px solid #1f1f1f; border-radius: 4px; padding: 2rem; position: relative; }
-.testi-card::before { content: '"'; font-size: 5rem; color: var(--accent); opacity: 0.15; position: absolute; top: 0.5rem; left: 1.25rem; line-height: 1; font-family: 'Syne', sans-serif; }
-.testi-quote { font-size: 0.95rem; color: var(--grey); line-height: 1.7; font-style: italic; margin-bottom: 1.5rem; }
-.testi-author { display: flex; align-items: center; gap: 0.75rem; }
-.testi-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--accent); color: var(--black); display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1rem; flex-shrink: 0; }
-.testi-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem; }
-.testi-role { font-size: 0.75rem; color: var(--grey); }
     }
   </style>
 </head>
@@ -527,45 +550,45 @@
     </div>
   </section>
 
- <!-- PORTFOLIO -->
-<section id="portfolio" style="background: #0d0d0d;">
-  <div class="section-label">My Work</div>
-  <h2>Built with purpose.</h2>
+  <!-- PORTFOLIO -->
+  <section id="portfolio" style="background: #0d0d0d;">
+    <div class="section-label">My Work</div>
+    <h2>Built with purpose.</h2>
+    <div class="portfolio-grid">
 
-  <div class="portfolio-grid">
+      <!-- Artist Portfolio -->
+      <a href="https://bearandlouise.netlify.app/" target="_blank" class="portfolio-card">
+        <div class="portfolio-thumb art">Artist Portfolio</div>
+        <div class="portfolio-info">
+          <h3>Artist Portfolio</h3>
+          <p>Gallery-style portfolio site showcasing original artwork with a clean, visual-first design.</p>
+          <span class="portfolio-tag">Portfolio · Artist</span>
+        </div>
+      </a>
 
-    <!-- Artist Portfolio -->
-    <a href="https://bearandlouise.netlify.app/" target="_blank" class="portfolio-card">
-      <div class="portfolio-thumb art">Artist Portfolio</div>
-      <div class="portfolio-info">
-        <h3>Artist Portfolio</h3>
-        <p>Gallery-style portfolio site showcasing original artwork with a clean, visual-first design.</p>
-        <span class="portfolio-tag">Portfolio · Artist</span>
-      </div>
-    </a>
+      <!-- Alpine Sports Coaching -->
+      <a href="https://khgroenie.github.io/alpinesportscoaching2.0/" target="_blank" class="portfolio-card">
+        <div class="portfolio-thumb" style="background: linear-gradient(135deg, #0a1a0f, #1b4332); color: #52b788;">Alpine Coaching</div>
+        <div class="portfolio-info">
+          <h3>Alpine Sports Coaching</h3>
+          <p>Full landing page for a UCI Level 2 cycling coach — plans, testimonials, WhatsApp sign-up.</p>
+          <span class="portfolio-tag">Landing Page · Sports</span>
+        </div>
+      </a>
 
-  <!-- Alpine Sports Coaching -->
-<a href="https://khgroenie.github.io/alpinesportscoaching2.0/" target="_blank" class="portfolio-card">
-  <div class="portfolio-thumb" style="background: linear-gradient(135deg, #0a1a0f, #1b4332); color: #52b788;">Alpine Coaching</div>
-  <div class="portfolio-info">
-    <h3>Alpine Sports Coaching</h3>
-    <p>Full landing page for a UCI Level 2 cycling coach — plans, testimonials, WhatsApp sign-up.</p>
-    <span class="portfolio-tag">Landing Page · Sports</span>
-  </div>
-</a>
+      <!-- Personal Training -->
+      <a href="https://kirstenprocoach.vercel.app/" target="_blank" class="portfolio-card">
+        <div class="portfolio-thumb pt">Personal Training</div>
+        <div class="portfolio-info">
+          <h3>Personal Training</h3>
+          <p>Conversion-focused site for an online personal trainer targeting local and international clients.</p>
+          <span class="portfolio-tag">Landing Page · Fitness</span>
+        </div>
+      </a>
 
-    <!-- Personal Training -->
-    <a href="https://kirstenprocoach.vercel.app/" target="_blank" class="portfolio-card">
-      <div class="portfolio-thumb pt">Personal Training</div>
-      <div class="portfolio-info">
-        <h3>Personal Training</h3>
-        <p>Conversion-focused site for an online personal trainer targeting local and international clients.</p>
-        <span class="portfolio-tag">Landing Page · Fitness</span>
-      </div>
-    </a>
+    </div>
+  </section>
 
-  </div>
-</section>
   <!-- PRICING -->
   <section id="pricing">
     <div class="section-label">Pricing</div>
@@ -589,8 +612,39 @@
     </div>
   </section>
 
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" style="background: #0d0d0d;">
+    <div class="section-label">Kind Words</div>
+    <h2>What clients say.</h2>
+    <div class="testi-grid">
+
+      <div class="testi-card">
+        <p class="testi-quote">"Add Alpine's testimonial here once they send it."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">P</div>
+          <div>
+            <p class="testi-name">Paul</p>
+            <p class="testi-role">Alpine Sports Coaching</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card" style="opacity:0.35;">
+        <p class="testi-quote">"More reviews coming soon..."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">?</div>
+          <div>
+            <p class="testi-name">Coming Soon</p>
+            <p class="testi-role">Future Client</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- ABOUT -->
-  <section id="about" style="background: #0d0d0d;">
+  <section id="about">
     <div class="about-inner">
       <div class="about-text">
         <div class="section-label">About</div>
