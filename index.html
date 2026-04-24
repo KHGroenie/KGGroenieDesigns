@@ -271,7 +271,36 @@
       color: var(--grey);
       text-align: center;
     }
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-label">Kind Words</div>
+  <h2>What clients say.</h2>
+  <div class="testi-grid">
 
+    <div class="testi-card">
+      <p class="testi-quote">"Add Alpine's testimonial here once they send it."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">P</div>
+        <div>
+          <p class="testi-name">Paul</p>
+          <p class="testi-role">Alpine Sports Coaching</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card" style="opacity:0.35;">
+      <p class="testi-quote">"More reviews coming soon..."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">?</div>
+        <div>
+          <p class="testi-name">Coming Soon</p>
+          <p class="testi-role">Future Client</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
     /* ── PORTFOLIO ── */
     .portfolio-grid {
       display: grid;
@@ -412,6 +441,15 @@
       section { padding: 3.5rem 1.2rem; }
       .pricing-card { padding: 2rem 1.5rem; }
       .hero { padding: 1.2rem; padding-bottom: 4rem; }
+      /* TESTIMONIALS */
+.testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; max-width: 800px; }
+.testi-card { background: var(--card); border: 1px solid #1f1f1f; border-radius: 4px; padding: 2rem; position: relative; }
+.testi-card::before { content: '"'; font-size: 5rem; color: var(--accent); opacity: 0.15; position: absolute; top: 0.5rem; left: 1.25rem; line-height: 1; font-family: 'Syne', sans-serif; }
+.testi-quote { font-size: 0.95rem; color: var(--grey); line-height: 1.7; font-style: italic; margin-bottom: 1.5rem; }
+.testi-author { display: flex; align-items: center; gap: 0.75rem; }
+.testi-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--accent); color: var(--black); display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1rem; flex-shrink: 0; }
+.testi-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem; }
+.testi-role { font-size: 0.75rem; color: var(--grey); }
     }
   </style>
 </head>
